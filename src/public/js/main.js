@@ -21,9 +21,9 @@ var pcConfig = turnConfig;
 
 //Set local stream constraints
 var localStreamConstraints = {
-    audio: true,
-    video: true
-  };
+  audio: true,
+  video: true
+};
 
 
 // Prompting for room name:

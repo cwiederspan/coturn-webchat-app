@@ -18,30 +18,33 @@ app.get("/", function(req, res) {
 	res.render("index.ejs");
 });
 
-/*
-app.get("/config", async (req, res) => {
+app.get("/config", async(req, res) => {
 
-    // var connectionString = "KEY_GOES_HERE";
+    // var connectionString = "endpoint=https://cdw-commsvcs-20201007.communication.azure.com/;accesskey=aTURBXwFGEonJ9VEQc3U1KNHltaBxA6LkoyX4ImxnkjT+x4QWO4C9n0tuA0nrqKIccXqpb7Je0+pEfBjVxEGJg==";
 
     // // Instantiate the identity client
     // const identityClient = new CommunicationIdentityClient(connectionString);
 
     // const identityResponse = await identityClient.createUser();
-    // //console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
+    // console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 
     // const relayClient = new CommunicationRelayClient(connectionString);
-    // //console.log("Getting relay configuration");
+    // console.log("Getting relay configuration");
 
     // const config = await relayClient.getRelayConfiguration(identityResponse);
-    // //console.log("RelayConfig", config);
+    // console.log("RelayConfig", config);
 
-    // var configuration = { iceServers: iceServers };
+    // var result = { iceServers: config.iceServers };
+	// console.log("ResultConfig", result);
 
-	// res.json(configuration);
+	// var jsResult = `turnConfig = ${result}`;
 
-	res.json({ value: 'Testing' });
+	// console.log("JSResult", jsResult);
+
+	//res.send(jsResult);
+	res.send("Hello, World!");
 });
-*/
+
 
 var server = http.createServer(app);
 
