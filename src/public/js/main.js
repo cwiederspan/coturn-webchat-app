@@ -167,34 +167,11 @@ window.onbeforeunload = function() {
 function createPeerConnection() {
 
   try {
-    /*
-    var connectionString = "endpoint=https://cdw-commsvcs-20201007.communication.azure.com/;accesskey=B1JzRrKVF7p+U7ckLoijDiO+Dg0krhHT3OlU5cXuKTUSEIdiK3mpypkssDpeAy5b7d2NbcpIuT1QTC7C8NLQ6A==";
 
-    // Instantiate the identity client
-    const identityClient = new CommunicationIdentityClient(connectionString);
-
-    var identityResponse;
-    identityClient.createUser().then(x => identityResponse = x);
-    console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
-
-    // let identityResponse = await identityClient.createUser();
-    // console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
-
-    const relayClient = new CommunicationRelayClient(connectionString);
-    console.log("Getting relay configuration");
-
-    var config;
-    relayClient.getRelayConfiguration(identityResponse).then(c => config = c);
-    console.log("RelayConfig", config);
-
-    var configuration = { iceServers: iceServers };
-    var pc = new RTCPeerConnection(configuration);
-    */
-
-    pc = new RTCPeerConnection(pcConfig);
+    var pc = new RTCPeerConnection(pcConfig);
 
     console.log('Is Channel Ready', pc.isChannelReady);
-
+    
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
     pc.onremovestream = handleRemoteStreamRemoved;

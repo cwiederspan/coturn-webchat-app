@@ -1,12 +1,12 @@
 'use strict';
 
-//Loading dependencies & initializing express
+// Loading dependencies & initializing express
 var os = require('os');
 var express = require('express');
 var app = express();
 var http = require('http');
 
-//For signalling in WebRTC
+// For signalling in WebRTC
 var socketIO = require('socket.io');
 
 const { CommunicationIdentityClient } = require("@azure/communication-identity");
@@ -40,7 +40,7 @@ app.get("/config", async (req, res) => {
 	// res.json(configuration);
 
 	res.json({ value: 'Testing' });
-})
+});
 */
 
 var server = http.createServer(app);
