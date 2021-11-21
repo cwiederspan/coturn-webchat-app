@@ -18,33 +18,31 @@ app.get("/", function(req, res) {
 	res.render("index.ejs");
 });
 
-app.get("/config", async(req, res) => {
+app.get("/config/turn.js", async(req, res) => {
 
-    // var connectionString = "endpoint=https://cdw-commsvcs-20201007.communication.azure.com/;accesskey=aTURBXwFGEonJ9VEQc3U1KNHltaBxA6LkoyX4ImxnkjT+x4QWO4C9n0tuA0nrqKIccXqpb7Je0+pEfBjVxEGJg==";
+    var connectionString = process.env['ACS_CONN_STRING'];
 
-    // // Instantiate the identity client
-    // const identityClient = new CommunicationIdentityClient(connectionString);
+    // Instantiate the identity client
+    const identityClient = new CommunicationIdentityClient(connectionString);
 
-    // const identityResponse = await identityClient.createUser();
+    const identityResponse = await identityClient.createUser();
     // console.log(`\nCreated an identity with ID: ${identityResponse.communicationUserId}`);
 
-    // const relayClient = new CommunicationRelayClient(connectionString);
+    const relayClient = new CommunicationRelayClient(connectionString);
     // console.log("Getting relay configuration");
 
-    // const config = await relayClient.getRelayConfiguration(identityResponse);
+    const config = await relayClient.getRelayConfiguration(identityResponse);
     // console.log("RelayConfig", config);
 
-    // var result = { iceServers: config.iceServers };
+    var result = { iceServers: config.iceServers };
 	// console.log("ResultConfig", result);
 
-	// var jsResult = `turnConfig = ${result}`;
+	var jsResult = "turnConfig = " + JSON.stringify(result);
+	// console.log(jsResult);
 
-	// console.log("JSResult", jsResult);
-
-	//res.send(jsResult);
-	res.send("Hello, World!");
+	res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+	res.send(jsResult);
 });
-
 
 var server = http.createServer(app);
 

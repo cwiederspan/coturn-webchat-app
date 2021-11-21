@@ -1,11 +1,5 @@
 'use strict';
 
-// const { CommunicationIdentityClient } = require("@azure/communication-identity");
-// const { CommunicationRelayClient } = require("@azure/communication-network-traversal");
-
-// import { CommunicationIdentityClient } from "@azure/communication-identity";
-// import { CommunicationRelayClient } from "@azure/communication-network-traversal";
-
 //Defining some global utility variables
 var isChannelReady = false;
 var isInitiator = false;
@@ -168,9 +162,11 @@ function createPeerConnection() {
 
   try {
 
-    var pc = new RTCPeerConnection(pcConfig);
+    console.log('pcConfig', pcConfig);
 
-    console.log('Is Channel Ready', pc.isChannelReady);
+    pc = new RTCPeerConnection(pcConfig);
+
+    //console.log('Is Channel Ready', pc.isChannelReady);
     
     pc.onicecandidate = handleIceCandidate;
     pc.onaddstream = handleRemoteStreamAdded;
